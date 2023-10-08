@@ -22,7 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/api/v1/**", configuration);
         return source;
     }
 
