@@ -15,9 +15,9 @@ public class QuoteRequestDTO implements Serializable {
 	String techNum;
 	List<String> sources;
 	String text;
-	@JsonFormat(pattern = "dd-MM-yyyy") 
+	//@JsonFormat(pattern = "dd-MM-yyyy") 
 	Date dateFrom;
-	@JsonFormat(pattern = "dd-MM-yyyy") 
+	//@JsonFormat(pattern = "dd-MM-yyyy") 
 	Date dateTo;
 	
 }
