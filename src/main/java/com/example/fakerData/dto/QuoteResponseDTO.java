@@ -3,6 +3,8 @@ package com.example.fakerData.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Data
@@ -15,6 +17,7 @@ public class QuoteResponseDTO implements Serializable {
 	private String lastName;
 	private String source;
 	private String text;
+	@JsonFormat(pattern = "dd-MM-yyyy") 
 	private Date dateRecorded;
 
 }
