@@ -27,8 +27,8 @@ public class DataFakerService {
 	private QuoteDAO quoteDAO;
 	
 	private static Locale locale = new Locale("es-AR");
-	//private static Faker faker = new Faker(locale);
-	private static Faker faker = new Faker(locale,new Random(0));
+	private static Faker faker = new Faker(locale);
+	//private static Faker faker = new Faker(locale,new Random(0));
 	
 	public void populateTechnicTable() {
 		for(int i=0; i<10; i++) {
@@ -53,7 +53,7 @@ public class DataFakerService {
 		List<Technic> tech = technicDAO.findAll();
 		List<String> source = Arrays.asList("Spongebob","Yoda","StrangerThings","Seinfield","Futurama");
 	    Random rnd = new Random(); 
-	    for(int i = 0; i < 150; i++) {
+	    for(int i = 0; i < 500; i++) {
 	    	Quote q = new Quote();
 	    	Technic rTech = tech.get(rnd.nextInt(tech.size()));
 	    	String rSource = source.get(rnd.nextInt(source.size()));
