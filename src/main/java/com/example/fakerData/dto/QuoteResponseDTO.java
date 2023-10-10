@@ -15,7 +15,6 @@ public class QuoteResponseDTO implements Serializable {
 	private String lastName;
 	private String source;
 	private String text;
-	@JsonFormat(pattern = "dd-MM-yyyy") 
 	private Date dateRecorded;
 
 }

@@ -18,9 +18,12 @@ import com.example.fakerData.dto.QuoteResponseDTO;
 import com.example.fakerData.dto.SourceDTO;
 import com.example.fakerData.service.QuoteService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/quote")
+@Slf4j
 public class QuoteController {
 	
 	@Autowired
@@ -44,6 +47,7 @@ public class QuoteController {
 	public ResponseEntity<List<QuoteResponseDTO>> getByFilters(@RequestBody QuoteRequestDTO filters){
 		List<QuoteResponseDTO> list = new ArrayList<>();
 		list = quoteService.getByFilters(filters);
+		log.info(list.get(0).getDateRecorded().toString());
 		return new ResponseEntity<List<QuoteResponseDTO>>(list,HttpStatus.OK);
 	}
 	
