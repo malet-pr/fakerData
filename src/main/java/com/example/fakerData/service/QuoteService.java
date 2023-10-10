@@ -79,9 +79,10 @@ public class QuoteService {
 				predicate = cb.and(predicate,p);
 			}
 			if(filters.getSources() != null && !filters.getSources().isEmpty()) {
+				List<String> names = filters.getSources().stream().map(s -> s.getSource()).toList();
 				In<String> inClause = cb.in(root.get("source"));
-				for (String source : filters.getSources()) {
-				    inClause.value(source);
+				for (String name : names) {
+				    inClause.value(name);
 				}
 				predicate = cb.and(predicate,inClause);			
 			}
