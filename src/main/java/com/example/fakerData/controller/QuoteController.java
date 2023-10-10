@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.fakerData.dto.QuoteDTO;
 import com.example.fakerData.dto.QuoteRequestDTO;
 import com.example.fakerData.dto.QuoteResponseDTO;
+import com.example.fakerData.dto.SourceDTO;
 import com.example.fakerData.service.QuoteService;
 
 @RestController
@@ -47,10 +48,10 @@ public class QuoteController {
 	}
 	
 	@GetMapping("/get-all-sources")
-	public ResponseEntity<List<String>> getAllSources(){
-		List<String> list = new ArrayList<>();
+	public ResponseEntity<List<SourceDTO>> getAllSources(){
+		List<SourceDTO> list = new ArrayList<>();
 		list = quoteService.getAllSources();
-		return new ResponseEntity<List<String>>(list,HttpStatus.OK);
+		return new ResponseEntity<List<SourceDTO>>(list,HttpStatus.OK);
 	}
 
 }

@@ -12,6 +12,7 @@ import com.example.fakerData.dto.EntityToResponseDto;
 import com.example.fakerData.dto.QuoteDTO;
 import com.example.fakerData.dto.QuoteRequestDTO;
 import com.example.fakerData.dto.QuoteResponseDTO;
+import com.example.fakerData.dto.SourceDTO;
 import com.example.fakerData.model.Quote;
 import com.example.fakerData.model.Technic;
 import jakarta.persistence.EntityManager;
@@ -112,9 +113,14 @@ public class QuoteService {
 		return result;
 	}
 
-	public List<String> getAllSources() {
-		List<String> result = new ArrayList<>();
-		result = quoteDAO.getAllSources();
+	public List<SourceDTO> getAllSources() {
+		List<SourceDTO> result = new ArrayList<>();
+		List<String> data = quoteDAO.getAllSources();
+		data.stream().forEach(d -> {
+			SourceDTO dto = new SourceDTO();
+			dto.setSource(d);
+			result.add(dto);
+		});
 		return result;
 	}
 
