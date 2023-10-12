@@ -58,4 +58,20 @@ public class QuoteController {
 		return new ResponseEntity<List<SourceDTO>>(list,HttpStatus.OK);
 	}
 
+	@GetMapping("/get-all")
+	public ResponseEntity<List<QuoteResponseDTO>> getAll(){
+		List<QuoteResponseDTO> list = new ArrayList<>();
+		list = quoteService.findAll();
+		return new ResponseEntity<List<QuoteResponseDTO>>(list,HttpStatus.OK);
+	}
+
+	@GetMapping("/get-all-paginated")
+	public ResponseEntity<List<QuoteResponseDTO>> getAllPaginated(@RequestParam(defaultValue = "0") Integer pageNo,
+																  @RequestParam(defaultValue = "10") Integer pageSize,
+																  @RequestParam(defaultValue = "id") String sortBy){
+		List<QuoteResponseDTO> list = new ArrayList<>();
+		list = quoteService.getAllPaginated(pageNo, pageSize, sortBy);
+		return new ResponseEntity<List<QuoteResponseDTO>>(list,HttpStatus.OK);
+	}
+
 }

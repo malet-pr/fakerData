@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.example.fakerData.dao.QuoteDAO;
 import com.example.fakerData.dao.TechnicDAO;
@@ -123,6 +127,21 @@ public class QuoteService {
 			result.add(dto);
 		});
 		return result;
+	}
+
+	public List<QuoteResponseDTO>  findAll(){
+		List<QuoteResponseDTO> result = entityToDto.entityListToDtoList(quoteDAO.findAll());
+		return result;
+	}
+
+	public List<QuoteResponseDTO>  getAllPaginated(Integer pageNo, Integer pageSize, String sortBy){
+		Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        Page<Quote> pagedResult = quoteDAO.findAll(paging);
+        if(pagedResult.hasContent()) {
+            return entityToDto.entityListToDtoList(pagedResult.getContent());
+        } else {
+            return entityToDto.entityListToDtoList(new ArrayList<Quote>());
+        }
 	}
 
 }
